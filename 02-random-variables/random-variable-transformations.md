@@ -126,10 +126,10 @@ If $x_1, x_2, \dots, x_n$ are the possible values of X with probabilities $p(x_i
 
 Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)$ be a function of X. The general procedure to find the PDF of Y, $g(y)$, is:
 
-1.  **Find the CDF of Y:** Find $G(y) = P(Y  y)$. To do this, express the event $Y  y$ in terms of an equivalent event for X.
+1.  **Find the CDF of Y:** Find $G(y) = P(Y \le y)$. To do this, express the event $Y \le y$ in terms of an equivalent event for X.
 2.  **Integrate:** Calculate $G(y)$ by integrating the PDF of X, $f(x)$, over the region defined in the previous step.
 3.  **Differentiate:** The PDF of Y is then found by differentiating its CDF: $g(y) = \frac{dG(y)}{dy}$.
-4.  **Find the Support:** Determine the range of possible values for Y (the \"support\" of the distribution).
+4.  **Find the Support:** Determine the range of possible values for Y (the "support" of the distribution).
 
 
 ---
@@ -148,7 +148,7 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 >
 > *   **Step 2: Find the CDF of Y, G(y).**
 > For any y in $(1, 4)$:
-> $G(y) = P(Y  y) = P(3X + 1  y) = P(3X  y-1) = P(X  \frac{y-1}{3})$.
+> $G(y) = P(Y \le y) = P(3X + 1 \le y) = P(3X \le y-1) = P(X \le \frac{y-1}{3})$.
 > To find this probability, we integrate the PDF of X from 0 up to $\frac{y-1}{3}$.
 > $G(y) = \int_{0}^{\frac{y-1}{3}} 2x \,dx = [x^2]_{0}^{\frac{y-1}{3}} = (\frac{y-1}{3})^2 = \frac{(y-1)^2}{9}$.
 >
@@ -166,29 +166,29 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 
 ### Question 31: Piecewise Linear Continuous Transformation
 
-> Suppose that X is uniformly distributed over the interval $(-1,1)$. A function Y is defined as $Y = (\frac{}{2} x)$. Find the PDF of Y.
+> Suppose that X is uniformly distributed over the interval $(-1,1)$. A function Y is defined as $Y = \sin\left(\frac{\pi}{2} x\right)$. Find the PDF of Y.
 >
 > **Answer**
 >
-> *   **Concept:** The function $Y = (\frac{}{2} x)$ is strictly increasing (monotonic) on the interval $(-1, 1)$. We can use the CDF method. The PDF for X is $f(x) = \frac{1}{1 - (-1)} = \frac{1}{2}$ for $-1 < x < 1$.
+> *   **Concept:** The function $Y = \sin\left(\frac{\pi}{2} x\right)$ is strictly increasing (monotonic) on the interval $(-1, 1)$. We can use the CDF method. The PDF for X is $f(x) = \frac{1}{1 - (-1)} = \frac{1}{2}$ for $-1 < x < 1$.
 >
 > *   **Step 1: Find the support of Y.**
-> As x varies from -1 to 1, $\frac{}{2}x$ varies from $-\frac{}{2}$ to $\frac{}{2}$.
-> Therefore, $Y = (\frac{}{2} x)$ varies from $(-\frac{}{2}) = -1$ to $(\frac{}{2}) = 1$. The support of Y is $(-1, 1)$.
+> As x varies from -1 to 1, $\frac{\pi}{2}x$ varies from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$.
+> Therefore, $Y = \sin\left(\frac{\pi}{2} x\right)$ varies from $\sin\left(-\frac{\pi}{2}\right) = -1$ to $\sin\left(\frac{\pi}{2}\right) = 1$. The support of Y is $(-1, 1)$.
 >
 > *   **Step 2: Find the CDF of Y, G(y).**
 > For any y in $(-1, 1)$:
-> $G(y) = P(Y  y) = P((\frac{}{2} x)  y)$.
-> Since $$ is invertible on this domain, we can apply $$ to both sides.
-> $P(\frac{}{2} x  (y)) = P(x  \frac{2}{} (y))$.
+> $G(y) = P(Y \le y) = P\left(\sin\left(\frac{\pi}{2} x\right) \le y\right)$.
+> Since $\sin$ is invertible on this domain, we can apply $\arcsin$ to both sides.
+> $P\left(\frac{\pi}{2} x \le \arcsin(y)\right) = P\left(x \le \frac{2}{\pi} \arcsin(y)\right)$.
 > We now integrate the PDF of X:
-> $G(y) = \int_{-1}^{\frac{2}{} (y)} \frac{1}{2} \,dx = \frac{1}{2} [x]_{-1}^{\frac{2}{} (y)} = \frac{1}{2} (\frac{2}{} (y) - (-1)) = \frac{1}{} (y) + \frac{1}{2}$.
+> $G(y) = \int_{-1}^{\frac{2}{\pi} \arcsin(y)} \frac{1}{2} \,dx = \frac{1}{2} [x]_{-1}^{\frac{2}{\pi} \arcsin(y)} = \frac{1}{2} \left(\frac{2}{\pi} \arcsin(y) - (-1)\right) = \frac{1}{\pi} \arcsin(y) + \frac{1}{2}$.
 >
 > *   **Step 3: Differentiate G(y) to find the PDF of Y, g(y).**
-> $g(y) = \frac{dG(y)}{dy} = \frac{d}{dy} \left( \frac{1}{} (y) + \frac{1}{2} \right) = \frac{1}{ \sqrt{1-y^2}}$.
+> $g(y) = \frac{dG(y)}{dy} = \frac{d}{dy} \left( \frac{1}{\pi} \arcsin(y) + \frac{1}{2} \right) = \frac{1}{\pi \sqrt{1-y^2}}$.
 >
 > *   **Step 4: State the final PDF.**
-> $g(y) = \begin{cases} \frac{1}{ \sqrt{1-y^2}} & -1 < y < 1 \\ 0 & \text{otherwise} \end{cases}$
+> $g(y) = \begin{cases} \frac{1}{\pi \sqrt{1-y^2}} & -1 < y < 1 \\ 0 & \text{otherwise} \end{cases}$
 >
 >
 > ---
@@ -207,7 +207,7 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 >
 > *   **Step 2: Find the CDF of Y, G(y).**
 > For any y in $(0, 27)$:
-> $G(y) = P(Y  y) = P(X^3  y) = P(X  y^{1/3})$.
+> $G(y) = P(Y \le y) = P(X^3 \le y) = P(X \le y^{1/3})$.
 > $G(y) = \int_{0}^{y^{1/3}} \frac{2x}{9} \,dx = \frac{2}{9} [\frac{x^2}{2}]_{0}^{y^{1/3}} = \frac{1}{9} [(y^{1/3})^2 - 0] = \frac{y^{2/3}}{9}$.
 >
 > *   **Step 3: Differentiate G(y) to find the PDF of Y, g(y).**
@@ -223,26 +223,26 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 
 ### Question 33: Monotonic Function Transformation
 
-> Let X be a RV with PDF $f(x) = \frac{1}{}, \text{ for } -\frac{}{2} < x < \frac{}{2}$. Find the PDF of $Y = (x)$.
+> Let X be a RV with PDF $f(x) = \frac{1}{\pi}, \text{ for } -\frac{\pi}{2} < x < \frac{\pi}{2}$. Find the PDF of $Y = \tan(x)$.
 >
 > **Answer**
 >
-> *   **Concept:** Since $Y = (X)$ is strictly monotonic on the given interval for X, we can use the shortcut formula: $g(y) = f_X(x) \left| \frac{dx}{dy} \right|$.
+> *   **Concept:** Since $Y = \tan(X)$ is strictly monotonic on the given interval for X, we can use the shortcut formula: $g(y) = f_X(x) \left| \frac{dx}{dy} \right|$.
 >
 > *   **Step 1: Find x in terms of y and calculate the derivative.**
-> $y = (x) ⇒ x = (y)$.
+> $y = \tan(x) \implies x = \arctan(y)$.
 > $\frac{dx}{dy} = \frac{1}{1+y^2}$.
 >
 > *   **Step 2: Find the support of Y.**
-> As x varies from $-\frac{}{2}$ to $\frac{}{2}$, $y = (x)$ varies from $-\infty$ to $\infty$.
+> As x varies from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$, $y = \tan(x)$ varies from $-\infty$ to $\infty$.
 >
 > *   **Step 3: Apply the formula.**
-> $g(y) = f_X((y)) \left| \frac{1}{1+y^2} \right|$.
-> Since the PDF of X is a constant $\frac{1}{}$ on its domain, $f_X((y)) = \frac{1}{}$.
-> $g(y) = \frac{1}{} \cdot \frac{1}{1+y^2}$.
+> $g(y) = f_X(\arctan(y)) \left| \frac{1}{1+y^2} \right|$.
+> Since the PDF of X is a constant $\frac{1}{\pi}$ on its domain, $f_X(\arctan(y)) = \frac{1}{\pi}$.
+> $g(y) = \frac{1}{\pi} \cdot \frac{1}{1+y^2}$.
 >
 > *   **Step 4: State the final PDF.**
-> $g(y) = \frac{1}{(1+y^2)}$ for $-\infty < y < \infty$.
+> $g(y) = \frac{1}{\pi(1+y^2)}$ for $-\infty < y < \infty$.
 > (This is the PDF of a Cauchy distribution).
 >
 >
@@ -256,20 +256,20 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 >
 > **Answer**
 >
-> *   **Concept:** This is another transformation of a continuous variable, $V = \frac{4}{3} R^3$. Since V is a strictly increasing function of R (for $R>0$), we can use the formula $g(v) = f_R(r) \left| \frac{dr}{dv} \right|$.
+> *   **Concept:** This is another transformation of a continuous variable, $V = \frac{4}{3}\pi R^3$. Since V is a strictly increasing function of R (for $R>0$), we can use the formula $g(v) = f_R(r) \left| \frac{dr}{dv} \right|$.
 >
 > *   **Step 1: Define the PDF of R.**
-> Given $_R = 1$ and $_R^2 = 0.04$, so $_R = 0.2$.
-> The PDF of R is $f_R(r) = \frac{1}{0.2\sqrt{2}} e^{-\frac{1}{2} \left(\frac{r-1}{0.2}\right)^2}$.
+> Given $\mu_R = 1$ and $\sigma_R^2 = 0.04$, so $\sigma_R = 0.2$.
+> The PDF of R is $f_R(r) = \frac{1}{0.2\sqrt{2\pi}} e^{-\frac{1}{2} \left(\frac{r-1}{0.2}\right)^2}$.
 >
 > *   **Step 2: Express r in terms of v and find the derivative.**
-> $v = \frac{4}{3} r^3 ⇒ r^3 = \frac{3v}{4} ⇒ r = \left(\frac{3v}{4}\right)^{1/3}$.
-> $\frac{dr}{dv} = \frac{1}{3} \left(\frac{3v}{4}\right)^{-2/3} \cdot \frac{3}{4} = \frac{1}{4} \left(\frac{3v}{4}\right)^{-2/3}$.
+> $v = \frac{4}{3}\pi r^3 \implies r^3 = \frac{3v}{4\pi} \implies r = \left(\frac{3v}{4\pi}\right)^{1/3}$.
+> $\frac{dr}{dv} = \frac{1}{3} \left(\frac{3v}{4\pi}\right)^{-2/3} \cdot \frac{3}{4\pi} = \frac{1}{4\pi} \left(\frac{3v}{4\pi}\right)^{-2/3}$.
 >
 > *   **Step 3: Apply the transformation formula.**
-> $g(v) = f_R\left(\left(\frac{3v}{4}\right)^{1/3}\right) \cdot \left| \frac{1}{4} \left(\frac{3v}{4}\right)^{-2/3} \right|$.
+> $g(v) = f_R\left(\left(\frac{3v}{4\pi}\right)^{1/3}\right) \cdot \left| \frac{1}{4\pi} \left(\frac{3v}{4\pi}\right)^{-2/3} \right|$.
 > Substitute the expressions for $f_R(r)$ and $\frac{dr}{dv}$:
-> $g(v) = \frac{1}{0.2\sqrt{2}} e^{-\frac{1}{2} \left( \frac{(\frac{3v}{4})^{1/3} - 1}{0.2} \right)^2} \cdot \frac{1}{4} \left(\frac{3v}{4}\right)^{-2/3}$.
+> $g(v) = \frac{1}{0.2\sqrt{2\pi}} e^{-\frac{1}{2} \left( \frac{(\frac{3v}{4\pi})^{1/3} - 1}{0.2} \right)^2} \cdot \frac{1}{4\pi} \left(\frac{3v}{4\pi}\right)^{-2/3}$.
 >
 > *   **Step 4: Define the support of V.**
 > Since R must be positive, V is also positive. The support is $v > 0$.
@@ -292,7 +292,7 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 >
 > *   **Step 2: Find the CDF of W, G(w).**
 > For any w in $[0, 1)$:
-> $G(w) = P(W  w) = P(|X|  w) = P(-w  X  w)$.
+> $G(w) = P(W \le w) = P(|X| \le w) = P(-w \le X \le w)$.
 > We integrate the PDF of X over this interval:
 > $G(w) = \int_{-w}^{w} \frac{1}{2} \,dx = \frac{1}{2} [x]_{-w}^{w} = \frac{1}{2} (w - (-w)) = \frac{1}{2}(2w) = w$.
 >
@@ -300,7 +300,7 @@ Let X be a continuous random variable (c.r.v) with PDF $f(x)$, and let $Y = H(X)
 > $g(w) = \frac{dG(w)}{dw} = \frac{d}{dw}(w) = 1$.
 >
 > *   **Step 4: State the final PDF.**
-> $g(w) = \begin{cases} 1 & 0  w < 1 \\ 0 & \text{otherwise} \end{cases}$
+> $g(w) = \begin{cases} 1 & 0 \le w < 1 \\ 0 & \text{otherwise} \end{cases}$
 > (This shows that W is uniformly distributed on $[0, 1)$).
 >
 >
