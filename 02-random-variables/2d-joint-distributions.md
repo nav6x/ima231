@@ -33,7 +33,7 @@
 
 ## Two-Dimensional Random Variables
 
-Let 'E' be an experiment & 'S' a sample space associated with E. Let X = X(s) and Y = Y(s) be two functions, each assigning a real number to each outcome s \in S. We call (X, Y) a two-dimensional random variable (or random vector).
+Let 'E' be an experiment & 'S' a sample space associated with E. Let X = X(s) and Y = Y(s) be two functions, each assigning a real number to each outcome $s \in S$. We call (X, Y) a two-dimensional random variable (or random vector).
 
 -   When (X,Y) => discrete, X & Y are discrete.
 -   When (X,Y) => continuous, X & Y are continuous.
